@@ -1,4 +1,6 @@
 <?php
+require_once './TreeNode.php';
+
 // 104. 二叉树的最大深度
 // 给定一个二叉树，找出其最大深度。
 
@@ -65,9 +67,23 @@ class Solution {
     }
 }
 
-$root = [3,9,20,null,null,15,7];
+// $root = [3,9,20,null,null,15,7];
+
+$a = new TreeNode(3);
+$b = new TreeNode(9);
+$c = new TreeNode(20);
+$d = new TreeNode(15);
+$e = new TreeNode(7);
+
+$a->createBinaryTree($b, $c);
+$b->createBinaryTree(NULL, NULL);
+$c->createBinaryTree($d, $e);
+
 $solution = new Solution();
-$ret = $solution->maxDepth($root);
-var_dump($ret); // string(1) 应该是3
+$ret = $solution->maxDepth($a);
+var_dump($ret); // int(1) 应该是3
 
 //即执行失败~  解决问题的关键在于如何使用PHP定义实现二叉树结构 ？
+// 如上所示: 定义完二叉树之后
+// 输出结果就是
+// int(3)
